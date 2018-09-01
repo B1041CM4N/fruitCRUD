@@ -1,0 +1,19 @@
+<section>
+  <h1>List's CRUD</h1>
+
+  <% if @lists.any? %>
+    <% @lists.each_with_index do |list, index| %>
+      <span>#<%= index+1 %></span>&nbsp;<%= list.name %>
+      <% if list.products.any? %>
+        <br><span>---- PRODUCTS ----</span><br>
+        <% list.products.each_with_index do |product, index| %>
+          <span>#<%= index+1 %></span>&nbsp;<%= product.name %>&nbsp;<span>Stock: <%= product&.stock %></span><br>
+          <span>Categoría: <%= product&.category&.name %></span><br>
+        <% end %>
+      <% else %>
+        <br><span> ~~~ EMPTY PRODUCT LIST ~~~</span><br>
+      <% end %>
+      <hr>
+    <% end %>
+  <% end %>
+</section>
